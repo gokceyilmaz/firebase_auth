@@ -4,19 +4,19 @@ import 'package:flutter/material.dart';
 
 class Kullanici {
   final String id;
-  final String kullaniciAdi;
+  final String adSoyad;
   final String email;
 
   Kullanici({
     @required this.id,
-    this.kullaniciAdi,
+    this.adSoyad,
     this.email,
   });
 
   factory Kullanici.firebasedenuret(User kullanici) {
     return Kullanici(
       id: kullanici.uid,
-      kullaniciAdi: kullanici.displayName,
+      adSoyad: kullanici.displayName,
       email: kullanici.email,
     );
   }
@@ -24,7 +24,7 @@ class Kullanici {
   factory Kullanici.dokumandanuret(DocumentSnapshot doc) {
     return Kullanici(
       id: doc.id,
-      kullaniciAdi: doc.data()['kullaniciAdi'],
+      adSoyad: doc.data()['kullaniciAdi'],
       email: doc.data()['email'],
     );
   }
