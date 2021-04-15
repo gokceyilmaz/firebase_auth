@@ -1,6 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
-import 'package:firebaseauth/servisler/yetkilendirmeServisi.dart';
-import 'package:firebaseauth/yonlendirme.dart';
+import 'package:firebaseauth/servisler/firebaseAuthServisi.dart';
+import 'package:firebaseauth/girisYonlendirme.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
