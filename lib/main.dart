@@ -17,9 +17,9 @@ class MyApp extends StatelessWidget {
       create: (_) => YetkilendirmeServisi(),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Giysi Dolabı',
+        title: 'Akıllı Bina',
         theme: ThemeData(
-          primarySwatch: Colors.blue,
+          primarySwatch: Colors.purple,
         ),
         home: Yonlendirme(),
       ),

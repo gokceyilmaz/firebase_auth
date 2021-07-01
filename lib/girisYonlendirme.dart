@@ -14,7 +14,9 @@ class Yonlendirme extends StatelessWidget {
   Widget build(BuildContext context) {
     final _yetkilendirmeServisi =
         Provider.of<YetkilendirmeServisi>(context, listen: false);
+
     //Uygulamada Giriş yapılmış ise direk anasayfaya yönlendiriyoruz aktif giriş yok ise giriş ekranına yönlendiriliyor.
+
     return StreamBuilder(
         stream: _yetkilendirmeServisi.durumTakipcisi,
         builder: (context, snapshot) {
@@ -25,9 +27,11 @@ class Yonlendirme extends StatelessWidget {
             Kullanici aktifKullanici = snapshot.data;
             _yetkilendirmeServisi.aktifkullaniciid = aktifKullanici.id;
             return AnaSayfa();
-          } else {
+          }
+          else {
             return GirisSayfasi();
           }
         });
+
   }
 }

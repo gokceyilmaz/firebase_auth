@@ -93,7 +93,7 @@ class _HesapOlusturState extends State<HesapOlustur> {
                 Container(
                   width: 100,
                   decoration: BoxDecoration(
-                    color: Colors.red,
+                    color: Colors.purple.shade200,
                   ),
                   child: TextButton(
                     onPressed: _register,

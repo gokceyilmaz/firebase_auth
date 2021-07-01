@@ -13,6 +13,7 @@ class _GirisSayfasiState extends State<GirisSayfasi> {
   String email, sifre;
   final _formAnahtari = GlobalKey<FormState>();
   final _scaffoldAnahtari = GlobalKey<ScaffoldState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,84 +30,99 @@ class _GirisSayfasiState extends State<GirisSayfasi> {
     return Form(
       key: _formAnahtari,
       child: Scaffold(
-        appBar: AppBar(
-          centerTitle: true,
-          title: Text("Giriş Sayfası"),
-        ),
-        body: Column(
-          children: [
-            SizedBox(
-              height: 150,
-            ),
-            TextFormField(
-                decoration: InputDecoration(
-                  hintText: "Email",
-                  hintStyle: TextStyle(color: Colors.grey),
-                  prefixIcon: Icon(Icons.mail),
-                ),
-                validator: (girilenDeger) {
-                  if (girilenDeger.isEmpty) {
-                    return "Email alanı boş bırakılmaz";
-                  } else if (!girilenDeger.contains("@")) {
-                    return "Girilen değer mail değil";
-                  }
-                  return null;
-                },
-                onSaved: (girilenDeger) {
-                  email = girilenDeger;
-                }),
-            TextFormField(
-              obscureText: true,
-              decoration: InputDecoration(
-                hintText: "Şifre",
-                hintStyle: TextStyle(color: Colors.grey),
-                prefixIcon: Icon(Icons.lock),
-              ),
-              validator: (girilenDeger) {
-                if (girilenDeger.isEmpty) {
-                  return "Şifre alanı boş bırakılmaz";
-                } else if (girilenDeger.trim().length < 4) {
-                  return "Şifre 4 karakterden az olamaz";
-                }
-                return null;
-              },
-              onSaved: (girilenDeger) {
-                sifre = girilenDeger;
-              },
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+          appBar: AppBar(
+            centerTitle: true,
+            title: Text("Giriş Sayfası"),
+          ),
+          body: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Container(
-                  height: 50,
-                  decoration: BoxDecoration(color: Colors.yellow),
-                  child: TextButton(
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => HesapOlustur()));
+                SizedBox(
+                  height: 150,
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: TextFormField(
+                    decoration: InputDecoration(
+                      hintText: "E-mail",
+                      labelText: 'E-mail*',
+                      border: OutlineInputBorder(),
+                      hintStyle: TextStyle(color: Colors.grey),
+                      prefixIcon: Icon(Icons.mail),
+                    ),
+                    validator: (girilenDeger) {
+                      if (girilenDeger.isEmpty) {
+                        return "Email alanı boş bırakılmaz";
+                      } else if (!girilenDeger.contains("@")) {
+                        return "Girilen değer mail değil";
+                      }
+                      return null;
                     },
-                    child: Text("Kayıt ol"),
+                    onSaved: (girilenDeger) {
+                      email = girilenDeger;
+                    },
                   ),
                 ),
-                Container(
-                  decoration: BoxDecoration(
-                    color: Colors.red,
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: TextFormField(
+                    obscureText: true,
+                    decoration: InputDecoration(
+                      hintText: "Şifre",
+                      border: OutlineInputBorder(),
+                      hintStyle: TextStyle(color: Colors.grey),
+                      prefixIcon: Icon(Icons.lock),
+                    ),
+                    validator: (girilenDeger) {
+                      if (girilenDeger.isEmpty) {
+                        return "Şifre alanı boş bırakılmaz";
+                      } else if (girilenDeger.trim().length < 4) {
+                        return "Şifre 4 karakterden az olamaz";
+                      }
+                      return null;
+                    },
+                    onSaved: (girilenDeger) {
+                      sifre = girilenDeger;
+                    },
                   ),
-                  child: TextButton(
-                    onPressed: _girisyap,
-                    child: Text("Giriş Yap"),
-                  ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Container(
+                      //padding: EdgeInsets.all((18.0)),
+                      height: 50,
+                      decoration: BoxDecoration(color: Colors.purple.shade200),
+                      child: TextButton(
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => HesapOlustur()));
+                        },
+                        child: Text("Kayıt ol",
+                            style: TextStyle(color: Colors.white)),
+                      ),
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Colors.purple.shade300,
+                      ),
+                      child: TextButton(
+                        onPressed: _girisyap,
+                        child: Text("Giriş Yap",
+                            style: TextStyle(color: Colors.white)),
+                      ),
+                    )
+                  ],
                 )
               ],
-            )
-          ],
-        ),
-      ),
+            ),
+          )),
     );
   }
 

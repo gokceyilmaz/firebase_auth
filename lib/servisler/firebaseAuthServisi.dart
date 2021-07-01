@@ -5,6 +5,8 @@ class YetkilendirmeServisi {
   final FirebaseAuth auth;
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   String aktifkullaniciid;
+
+
   YetkilendirmeServisi({this.auth});
   Stream<User> get user => auth.authStateChanges();
   Kullanici _kullaniciOlustur(User kullanici) {
@@ -26,6 +28,7 @@ class YetkilendirmeServisi {
         email: eposta, password: sifre);
     return _kullaniciOlustur(girisKarti.user);
   }
+
 
   Future<void> cikisYap() {
     return _firebaseAuth.signOut();

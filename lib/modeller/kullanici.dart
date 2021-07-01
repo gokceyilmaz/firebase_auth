@@ -6,11 +6,14 @@ class Kullanici {
   final String id;
   final String adSoyad;
   final String email;
+  String profilURL;
+  String userName;
 
   Kullanici({
     @required this.id,
     this.adSoyad,
     this.email,
+    this.profilURL, this.userName,
   });
 
   factory Kullanici.firebasedenuret(User kullanici) {
@@ -26,6 +29,9 @@ class Kullanici {
       id: doc.id,
       adSoyad: doc.data()['kullaniciAdi'],
       email: doc.data()['email'],
+      profilURL: doc.data()['profilURL'],
+      userName:doc.data()['userName'] ,
     );
   }
+
 }
